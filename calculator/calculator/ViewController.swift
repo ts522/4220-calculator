@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         zeroB.setTitle("0", for: .normal)
         holder.addSubview(zeroB)
         zeroB.tag = 1
-        zeroB.addTarget(self, action: #selector(numPresed(_:)), for: .touchUpInside)
+        zeroB.addTarget(self, action: #selector(zPress(_:)), for: .touchUpInside)
         
         for x in 0..<3 {
             let xB = UIButton(frame: CGRect(x: buttonSize * CGFloat(x), y: holder.frame.size.height-(buttonSize*2), width: buttonSize, height: buttonSize))
@@ -118,6 +118,15 @@ class ViewController: UIViewController {
         }
     }
     
+     @objc func zPress() {
+
+        if resultLabel.text != "0" {
+            if let text = resultLabel.text {
+                resultLabel.text = "\(text)\(0)"
+            }
+        }
+    }
+    
     @objc func opPresed(_ sender: UIButton){
         let tag = sender.tag
         
@@ -135,19 +144,19 @@ class ViewController: UIViewController {
                 switch operation{
                 case .add:
                     let r = firstNum + secondNum
-                    result.text = "\(result)"
+                    result.text = "\(r)"
                     break
                 case .subtract:
                     let r = firstNum - secondNum
-                    result.text = "\(result)"
+                    result.text = "\(r)"
                     break
                 case .multiply:
                     let r = firstNum * secondNum
-                    result.text = "\(result)"
+                    result.text = "\(r)"
                     break
                 case .divide:
                     let r = firstNum / secondNum
-                    result.text = "\(result)"
+                    result.text = "\(r)"
                     break
                 default:
                     break
